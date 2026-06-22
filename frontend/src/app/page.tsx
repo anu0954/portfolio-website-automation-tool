@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import ResumeForm from "../components/ResumeForm";
+import ResumePreview from "../components/ResumePreview";
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -13,42 +15,20 @@ export default function Home() {
         Resume Builder
       </h1>
 
-      <div className="flex flex-col gap-4 max-w-md">
+      <ResumeForm
+        name={name}
+        email={email}
+        skills={skills}
+        setName={setName}
+        setEmail={setEmail}
+        setSkills={setSkills}
+      />
 
-        <input
-          type="text"
-          placeholder="Enter Name"
-          className="border p-2 rounded"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <input
-          type="email"
-          placeholder="Enter Email"
-          className="border p-2 rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <textarea
-          placeholder="Enter Skills"
-          className="border p-2 rounded"
-          value={skills}
-          onChange={(e) => setSkills(e.target.value)}
-        />
-
-      </div>
-
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold">
-          Preview
-        </h2>
-
-        <p>Name: {name}</p>
-        <p>Email: {email}</p>
-        <p>Skills: {skills}</p>
-      </div>
+      <ResumePreview
+        name={name}
+        email={email}
+        skills={skills}
+      />
     </main>
   );
 }
